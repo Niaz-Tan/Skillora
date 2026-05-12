@@ -20,7 +20,7 @@ const navLinks = [
 ];
 
 const Header = () => {
-  const ifAuthorized = true;
+  const ifAuthorized = false;
 
   const [showRegisterMenu, setShowRegisterMenu] = useState(false);
 
