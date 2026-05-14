@@ -1,7 +1,8 @@
+import { getCategories } from "@/queries/categories";
 import Link from "next/link";
 import { FaArrowRight, FaLayerGroup } from "react-icons/fa6";
 
-const categories = [
+const all = [
   {
     id: 1,
     title: "Web Development",
@@ -20,7 +21,8 @@ const categories = [
   },
 ];
 
-const Categorys = () => {
+const Categorys = async () => {
+  const categories = await getCategories();
   return (
     <section className="relative px-6 py-20 md:px-10 lg:px-40">
       <div className="mb-8 flex items-center justify-between">
@@ -38,8 +40,8 @@ const Categorys = () => {
       <div className="grid gap-5 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {categories.map((category) => (
           <Link
-            key={category.id}
-            href={`/categories/${category.id}`}
+            key={category._id}
+            href={`/categories/${category._id}`}
             className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.05]"
           >
             <div className="flex flex-col items-center text-center">
@@ -50,8 +52,6 @@ const Categorys = () => {
               <h3 className="text-sm font-semibold text-white sm:text-base">
                 {category.title}
               </h3>
-
-              <p className="mt-1 text-xs text-zinc-500">Explore courses</p>
             </div>
           </Link>
         ))}

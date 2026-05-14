@@ -1,39 +1,12 @@
+import { formatPrice } from "@/lib/formatPrice";
+import { getCourses } from "@/queries/courses";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaBookOpen } from "react-icons/fa6";
 
-const courses = [
-  {
-    id: 1,
-    title: "Modern Next.js Course",
-    category: "Web Development",
-    price: 49,
-    modules: 12,
-  },
-  {
-    id: 2,
-    title: "React From Zero to Hero",
-    category: "Frontend",
-    price: 39,
-    modules: 8,
-  },
-  {
-    id: 3,
-    title: "UI Design Masterclass",
-    category: "Design",
-    price: 59,
-    modules: 10,
-  },
-  {
-    id: 4,
-    title: "Fullstack MERN Bootcamp",
-    category: "Fullstack",
-    price: 69,
-    modules: 14,
-  },
-];
-
-const Courses = () => {
+const Courses = async () => {
+  const courses = await getCourses();
+  console.log(courses);
   return (
     <section className="relative px-6 pb-24 md:px-10 lg:px-40">
       <div className="mb-8 flex items-center justify-between">
@@ -51,8 +24,8 @@ const Courses = () => {
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
         {courses.map((course) => (
           <Link
-            key={course.id}
-            href={`/courses/${course.id}`}
+            key={course._id}
+            href={`/courses/${course._id}`}
             className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.05]"
           >
             <div className="relative aspect-video overflow-hidden">
@@ -68,19 +41,20 @@ const Courses = () => {
             </div>
 
             <div className="p-5">
-              <p className="text-xs text-zinc-500">{course.category}</p>
-
+              {/* <p className="text-xs text-zinc-500">{course.category}</p> */}
               <h3 className="mt-2 line-clamp-2 text-lg font-semibold text-white">
                 {course.title}
               </h3>
 
               <div className="mt-4 flex items-center gap-2 text-sm text-zinc-400">
                 <FaBookOpen />
-                <span>{course.modules} Modules</span>
+                <span>{course.modules.length} Modules</span>
               </div>
 
               <div className="mt-6 flex items-center justify-between">
-                <p className="text-lg font-bold text-white">${course.price}</p>
+                <p className="text-lg font-bold text-white">
+                  {formatPrice(course.price)}
+                </p>
 
                 <div className="flex items-center gap-2 text-sm text-zinc-300 transition group-hover:text-white">
                   Enroll

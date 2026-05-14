@@ -3,3 +3,46 @@
 body {
   @apply bg-zinc-950 text-zinc-50;
 }
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+
+/* Chrome / Edge / Brave */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* REMOVE ALL ARROWS */
+
+::-webkit-scrollbar-button:single-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* REMOVE CORNER */
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

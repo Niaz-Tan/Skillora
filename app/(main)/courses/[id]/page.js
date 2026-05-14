@@ -1,153 +1,160 @@
+import { formatPrice } from "@/lib/formatPrice";
+import { getCourseById } from "@/queries/courses";
 import Image from "next/image";
-import Link from "next/link";
+
 import {
   FaBookOpen,
+  FaChevronDown,
   FaClock,
-  FaPlay,
+  FaPlayCircle,
   FaStar,
   FaUserGraduate,
-} from "react-icons/fa6";
-
-const courses = [
-  {
-    id: "1",
-    title: "Modern Next.js Course",
-    category: "Web Development",
-    price: 49,
-    modules: 12,
-    students: 1200,
-    duration: "18 Hours",
-    instructor: "Niaz Uddin",
-    description:
-      "Learn modern Next.js from scratch with real-world projects, authentication, server actions, database integration, and deployment.",
-  },
-];
+} from "react-icons/fa";
 
 const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
-
-  const course = courses.find((course) => course.id === id) || courses[0];
+  const course = await getCourseById(id);
 
   return (
-    <div className="relative min-h-screen overflow-hidden px-6 pt-28 pb-24 md:px-10 lg:px-40">
-      {/* bg */}
+    <div className="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black px-6 pt-28 pb-24 md:px-10 lg:px-24">
+      {/* background */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      <div className="absolute top-[-200px] left-[-100px] h-[450px] w-[450px] rounded-full bg-pink-500/20 blur-3xl" />
-      <div className="absolute right-[-100px] top-[300px] h-[450px] w-[450px] rounded-full bg-indigo-500/20 blur-3xl" />
+      <div className="absolute top-[-200px] left-[-100px] h-[400px] w-[400px] rounded-full bg-pink-500/20 blur-3xl" />
 
-      <div className="relative grid gap-10 lg:grid-cols-[1fr_380px]">
-        {/* left */}
+      <div className="absolute right-[-100px] top-[250px] h-[400px] w-[400px] rounded-full bg-violet-500/20 blur-3xl" />
+
+      <div className="relative grid items-start gap-14 lg:grid-cols-2">
+        {/* LEFT */}
         <div>
-          <p className="text-sm text-zinc-500">{course.category}</p>
-
-          <h1 className="mt-3 text-4xl font-bold text-white">{course.title}</h1>
-
-          <p className="mt-5 max-w-3xl leading-8 text-zinc-400">
-            {course.description}
-          </p>
-
-          {/* stats */}
-          <div className="mt-8 flex flex-wrap gap-6 text-sm text-zinc-300">
-            <div className="flex items-center gap-2">
-              <FaStar className="text-yellow-400" />
-              <span>4.9 Rating</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaUserGraduate />
-              <span>{course.students}+ Students</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaClock />
-              <span>{course.duration}</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaBookOpen />
-              <span>{course.modules} Modules</span>
-            </div>
-          </div>
-
-          {/* thumbnail */}
-          <div className="relative mt-10 aspect-video overflow-hidden rounded-3xl border border-white/10">
+          {/* banner */}
+          <div className="group relative aspect-video overflow-hidden rounded-[32px] border border-white/10">
             <Image
-              unoptimized
-              src={`https://picsum.photos/seed/${course.title}/1200/700`}
+              src={`https://picsum.photos/seed/${course.title}/800/500`}
               alt={course.title}
               fill
-              className="object-cover"
+              unoptimized
+              className="object-cover transition duration-700 group-hover:scale-105"
             />
 
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-            <button className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-xl transition hover:scale-110">
-              <FaPlay className="ml-1 text-2xl text-white" />
-            </button>
+            <div className="absolute bottom-5 left-5 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-white backdrop-blur-xl">
+              Preview Course
+            </div>
           </div>
 
-          {/* curriculum */}
-          <div className="mt-14">
-            <h2 className="text-2xl font-semibold text-white">
-              Course Curriculum
-            </h2>
+          {/* info */}
+          <div>
+            {/* title */}
+            <h1 className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">
+              {course.title}
+            </h1>
 
-            <div className="mt-6 space-y-4">
-              {[1, 2, 3, 4, 5].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl"
-                >
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-white">Module {item}</h3>
+            {/* pricing */}
+            <div className="mt-10">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div className="flex items-center gap-2">
+                  <p className="text-xl text-zinc-500">Course Price :</p>
 
-                    <span className="text-sm text-zinc-500">5 Lessons</span>
-                  </div>
+                  <p className="text-3xl font-semibold text-white">
+                    {formatPrice(course.price)}
+                  </p>
                 </div>
-              ))}
+
+                <div className="w-fit rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400">
+                  Enrollment Open
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+                <button className="w-full rounded-2xl bg-gradient-to-r from-fuchsia-500 to-violet-600 py-4 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-all duration-300 hover:scale-[1.02] hover:opacity-95">
+                  Enroll Now
+                </button>
+
+                <button className="w-full rounded-2xl border border-white/10 bg-white/5 py-4 text-sm font-semibold text-gray-200 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white">
+                  Add to cart
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* right card */}
-        <div>
-          <div className="sticky top-28 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl">
-            <p className="text-4xl font-bold text-white">${course.price}</p>
+        {/* RIGHT */}
+        <div className="rounded-[30px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-white">Course Content</h2>
 
-            <button className="mt-6 w-full rounded-2xl bg-white py-3 font-semibold text-black transition hover:opacity-90">
-              Enroll Now
-            </button>
-
-            <div className="mt-8 space-y-4 text-sm text-zinc-400">
-              <div className="flex items-center justify-between">
-                <span>Instructor</span>
-                <span className="text-white">{course.instructor}</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span>Modules</span>
-                <span className="text-white">{course.modules}</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span>Duration</span>
-                <span className="text-white">{course.duration}</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span>Level</span>
-                <span className="text-white">Beginner</span>
-              </div>
+              <p className="mt-1 text-sm text-zinc-400">
+                {course.modules.length} modules included
+              </p>
             </div>
 
-            <Link
-              href="/courses"
-              className="mt-8 block text-center text-sm text-zinc-500 transition hover:text-white"
-            >
-              Back to courses
-            </Link>
+            {/* <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-300">
+              {course.duration}
+            </div> */}
           </div>
+
+          <div className="space-y-4">
+            {course.modules.map((module, index) => (
+              <details
+                key={module._id}
+                className="group overflow-hidden rounded-2xl border border-white/10 bg-black/20"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/[0.03]">
+                  <div>
+                    <p className="text-sm text-zinc-500">Module {index + 1}</p>
+
+                    <h3 className="mt-1 font-medium text-white">
+                      {module.title}
+                    </h3>
+                  </div>
+
+                  <FaChevronDown className="text-zinc-500 transition duration-300 group-open:rotate-180" />
+                </summary>
+
+                <div className="border-t border-white/5 px-4 py-3">
+                  {/* <div className="space-y-2">
+                    {module.lessons.map((lesson, lessonIndex) => (
+                      <button
+                        key={lessonIndex}
+                        className="flex w-full items-center justify-between rounded-xl border border-transparent bg-white/[0.02] px-4 py-3 text-left transition-all hover:border-white/10 hover:bg-white/[0.04]"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-zinc-300">
+                            <FaPlayCircle />
+                          </div>
+
+                          <div>
+                            <p className="text-sm text-white">{lesson.title}</p>
+
+                            <p className="mt-1 text-xs text-zinc-500">
+                              {lesson.duration}
+                            </p>
+                          </div>
+                        </div>
+
+                        <span className="text-xs text-zinc-500">
+                          Lesson {lessonIndex + 1}
+                        </span>
+                      </button>
+                    ))}
+                  </div> */}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <div className="mt-10">
+        {/* category */}
+        <div>
+          <span>Development</span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </div>

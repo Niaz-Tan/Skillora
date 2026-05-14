@@ -1,11 +1,12 @@
-import { replaceMongoIdInArray, replaceMongoIdInObj } from "@/lib/convertData";
+import { replaceMongoIdInArray } from "@/lib/convertData";
 import { Category } from "@/models/category-model";
 import { connectDB } from "@/services/mongo";
 
 export const getCategories = async () => {
   await connectDB();
   const categories = await Category.find().lean();
-  return replaceMongoIdInArray(categories);
+  return JSON.parse(JSON.stringify(categories));
+  
 };
 
 export const getCategoryDetailis = async (id) => {
@@ -13,7 +14,8 @@ export const getCategoryDetailis = async (id) => {
 
   try {
     const category = await Category.findById(id).lean();
-    return replaceMongoIdInObj(category);
+    return JSON.parse(JSON.stringify(category));
+    
   } catch (err) {
     throw new Error(err);
   }

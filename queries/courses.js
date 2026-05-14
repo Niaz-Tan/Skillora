@@ -1,4 +1,4 @@
-import { replaceMongoIdInArray, replaceMongoIdInObj } from "@/lib/convertData";
+import { replaceMongoIdInArray } from "@/lib/convertData";
 import "@/models/category-model";
 import { Course } from "@/models/course-model";
 import "@/models/module-model";
@@ -18,41 +18,40 @@ export const getCourses = async () => {
         "price",
         "category",
         "instructor",
+        "testimonials",
+        "quizzes",
       ])
+      .populate("modules")
       .populate("category")
       .populate("instructor")
-      .populate("modules")
       .populate("testimonials")
+      .populate("quizzes")
       .lean();
 
-    return replaceMongoIdInArray(courses);
+    return JSON.parse(JSON.stringify(courses));
   } catch (err) {
+    console.error(err);
     throw new Error(err);
   }
 };
 
-export const geCourseById = async (id) => {
+export const getCourseById = async (id) => {
   await connectDB();
   try {
-    const courses = await Course.findById(id)
-      .select([
-        "title",
-        "subtitle",
-        "thumbnail",
-        "modules",
-        "price",
-        "category",
-        "instructor",
-      ])
+    const course = await Course.findById(id)
+      .populate("modules")
       .populate("category")
       .populate("instructor")
-      .populate("modules")
       .populate("testimonials")
+      // .populate("quizzes")
       .lean();
 
-    return replaceMongoIdInObj(courses);
+    if (!course) return null; // better than returning []
+
+     return JSON.parse(JSON.stringify(course));
+  
   } catch (err) {
+    console.error(err);
     throw new Error(err);
-    return [];
   }
 };
