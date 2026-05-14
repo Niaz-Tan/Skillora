@@ -1,4 +1,5 @@
 import { formatPrice } from "@/lib/formatPrice";
+import { getCategories } from "@/queries/categories";
 import { getCourses } from "@/queries/courses";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +7,6 @@ import { FaArrowRight, FaBookOpen } from "react-icons/fa6";
 
 const Courses = async () => {
   const courses = await getCourses();
-  console.log(courses);
   return (
     <section className="relative px-6 pb-24 md:px-10 lg:px-40">
       <div className="mb-8 flex items-center justify-between">
