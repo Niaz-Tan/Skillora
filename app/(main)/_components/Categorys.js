@@ -42,7 +42,7 @@ const Categorys = async () => {
           <Link
             key={category._id}
             href={`/categories/${category._id}`}
-            className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.05]"
+            className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.05] "
           >
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 rounded-2xl border border-white/10 bg-black/30 p-4">
