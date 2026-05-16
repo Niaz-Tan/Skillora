@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-import SearchBar from "./SearchBar";
-import DesktopControls from "./DesktopControls";
-import Sidebar from "./Sidebar";
 import CourseGrid from "./CourseGrid";
+import DesktopControls from "./DesktopControls";
 import MobileFilter from "./MobileFilter";
 import MobileSort from "./MobileSort";
+import SearchBar from "./SearchBar";
+import Sidebar from "./Sidebar";
 
 const CoursesClient = ({ courses, categories }) => {
   const [search, setSearch] = useState("");
@@ -20,31 +20,23 @@ const CoursesClient = ({ courses, categories }) => {
 
   const toggleCategory = (cat) => {
     setSelectedCategories((prev) =>
-      prev.includes(cat)
-        ? prev.filter((c) => c !== cat)
-        : [...prev, cat]
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat],
     );
   };
 
   const filtered = courses
-    .filter((c) =>
-      c.title.toLowerCase().includes(search.toLowerCase())
-    )
+    .filter((c) => c.title.toLowerCase().includes(search.toLowerCase()))
     .filter((c) =>
       selectedCategories.length
         ? selectedCategories.includes(c.category?.title)
-        : true
+        : true,
     )
     .filter((c) => {
       if (priceFilter === "free") return c.price === 0;
       if (priceFilter === "paid") return c.price > 0;
       return true;
     })
-    .sort((a, b) =>
-      sort === "low"
-        ? a.price - b.price
-        : b.price - a.price
-    );
+    .sort((a, b) => (sort === "low" ? a.price - b.price : b.price - a.price));
 
   return (
     <div className="min-h-screen px-6 pt-28 pb-20 md:px-10 lg:px-40 text-white relative">
@@ -52,10 +44,7 @@ const CoursesClient = ({ courses, categories }) => {
       <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
 
       <div className="relative">
-        <SearchBar
-          search={search}
-          setSearch={setSearch}
-        />
+        <SearchBar search={search} setSearch={setSearch} />
 
         {/* MOBILE ACTION BAR */}
         <div className="flex md:hidden gap-3 mt-4">

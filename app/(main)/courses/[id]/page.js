@@ -2,18 +2,12 @@ import { formatPrice } from "@/lib/formatPrice";
 import { getCourseById } from "@/queries/courses";
 import Image from "next/image";
 
-import {
-  FaBookOpen,
-  FaChevronDown,
-  FaClock,
-  FaPlayCircle,
-  FaStar,
-  FaUserGraduate,
-} from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
   const course = await getCourseById(id);
+  const nam = "Coden";
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black px-6 pt-28 pb-24 md:px-10 lg:px-24">
@@ -114,8 +108,8 @@ const CourseDetailsPage = async ({ params }) => {
                   <FaChevronDown className="text-zinc-500 transition duration-300 group-open:rotate-180" />
                 </summary>
 
-                <div className="border-t border-white/5 px-4 py-3">
-                  {/* <div className="space-y-2">
+                {/* <div className="border-t border-white/5 px-4 py-3">
+                  <div className="space-y-2">
                     {module.lessons.map((lesson, lessonIndex) => (
                       <button
                         key={lessonIndex}
@@ -140,22 +134,42 @@ const CourseDetailsPage = async ({ params }) => {
                         </span>
                       </button>
                     ))}
-                  </div> */}
-                </div>
+                  </div>
+                </div> */}
               </details>
             ))}
           </div>
         </div>
         <div></div>
       </div>
-      <div className="mt-10">
+      <div>
         {/* category */}
+        <span className="bg-green-500 text-sm px-3 py-1 rounded-xl text-black font-bold">
+          Development
+        </span>
         <div>
-          <span>Development</span>
-          <span></span>
-          <span></span>
-          <span></span>
+          {/* title */}
+          <h1>React Course</h1>
+          <p>Javascript & React mastary</p>
+          <div>
+            {/* instructor */}
+            <div>
+              <Image
+                unoptimized
+                src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${nam}`}
+                alt="profile"
+                width={40}
+                height={40}
+                className="rounded-full border border-white/10"
+              />
+              <p>{`${nam}`}</p>
+            </div>
+            <div>
+              <p>Last Updated: Feb 22, 2022</p>
+            </div>
+          </div>
         </div>
+        {/*  */}
       </div>
     </div>
   );
