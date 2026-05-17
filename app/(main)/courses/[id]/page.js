@@ -6,6 +6,7 @@ import CourseIntro from "./_components/CourseIntro";
 import InforNav from "./_components/InforNav";
 import ModuleSection from "./_components/ModuleSection";
 import Pricing from "./_components/Pricing";
+import Testimonials from "./_components/Testimonial";
 
 const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -38,7 +39,8 @@ const CourseDetailsPage = async ({ params }) => {
         {/* navigation */}
         <InforNav nam={nam} />
 
-        {/*  */}
+        {/* testimonial */}
+        <Testimonials />
       </div>
     </div>
   );
