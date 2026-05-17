@@ -10,7 +10,7 @@ const navData = [
   { Name: "Instructor" },
 ];
 const InforNav = ({nam}) => {
-  const [currentNav, setCurrentNav] = useState("Instructor");
+  const [currentNav, setCurrentNav] = useState("Carriculum");
 
   const handleClick = (name) => {
     setCurrentNav(name);
