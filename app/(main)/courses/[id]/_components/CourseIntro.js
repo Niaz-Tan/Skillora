@@ -5,7 +5,7 @@ const CourseIntro = ({ nam, title }) => {
     <div className="space-y-4 md:w-[50%]">
       {/* title */}
       <div>
-        <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+        <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-4xl">
           {title}
         </h1>
 

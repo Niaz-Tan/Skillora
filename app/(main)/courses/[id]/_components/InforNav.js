@@ -37,7 +37,7 @@ const InforNav = () => {
       </nav>
       {/* content */}
       <div>
-       <div className={currentNav === "Overview" ? "block" : "hidden"}>
+        <div className={currentNav === "Overview" ? "block" : "hidden"}>
           <Overview />
         </div>
 
