@@ -3,9 +3,9 @@ import { getCourseById } from "@/queries/courses";
 import BackgroundBlobs from "./_components/BackgroundBlobs";
 import Banner from "./_components/Banner";
 import CourseIntro from "./_components/CourseIntro";
+import InforNav from "./_components/InforNav";
 import ModuleSection from "./_components/ModuleSection";
 import Pricing from "./_components/Pricing";
-import InforNav from "./_components/InforNav";
 
 const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -34,10 +34,10 @@ const CourseDetailsPage = async ({ params }) => {
         <span className="bg-green-500 text-sm px-3 py-1 rounded-xl text-black font-bold">
           Development
         </span>
-        <CourseIntro nam={nam} title={course.title}/>
+        <CourseIntro nam={nam} title={course.title} />
         {/* navigation */}
-        <InforNav />
-        <div></div>
+        <InforNav nam={nam} />
+
         {/*  */}
       </div>
     </div>

@@ -9,8 +9,8 @@ const navData = [
   { Name: "Carriculum" },
   { Name: "Instructor" },
 ];
-const InforNav = () => {
-  const [currentNav, setCurrentNav] = useState("Overview");
+const InforNav = ({nam}) => {
+  const [currentNav, setCurrentNav] = useState("Instructor");
 
   const handleClick = (name) => {
     setCurrentNav(name);
@@ -46,7 +46,7 @@ const InforNav = () => {
         </div>
 
         <div className={currentNav === "Instructor" ? "block" : "hidden"}>
-          <Instructor />
+          <Instructor nam={nam}/>
         </div>
       </div>
     </div>
