@@ -42,8 +42,8 @@ const Testimonials = () => {
                 unoptimized
                 src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${t.name}`}
                 alt={t.name}
-                width={50}
-                height={50}
+                width={45}
+                height={45}
                 className="rounded-full border border-white/10 bg-white"
               />
 
