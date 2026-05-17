@@ -1,3 +1,7 @@
+// ================================
+// CourseDetailsPage.jsx
+// ================================
+
 import { getCourseById } from "@/queries/courses";
 
 import BackgroundBlobs from "./_components/BackgroundBlobs";
@@ -10,36 +14,37 @@ import Testimonials from "./_components/Testimonial";
 
 const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
+
   const course = await getCourseById(id);
+
   const nam = "Coder Guru";
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black px-6 pt-28 pb-24 md:px-10 lg:px-24">
+    <div className="relative overflow-hidden bg-black px-4 pb-24 pt-28 sm:px-6 lg:px-16">
       <BackgroundBlobs />
 
-      <div className="relative grid items-start gap-14 lg:grid-cols-2">
-        {/* LEFT */}
-        <div>
-          <Banner title={course.title} />
+      <div className="relative mx-auto max-w-7xl space-y-16">
+        {/* HERO */}
+        <section className="grid gap-10 lg:grid-cols-[1fr_380px] lg:items-start">
+          <div className="space-y-6">
+            <Banner title={course.title} />
 
-          <div>
+            <CourseIntro nam={nam} title={course.title} />
+          </div>
+
+          <div className="lg:sticky lg:top-24">
             <Pricing price={course.price} />
           </div>
-        </div>
+        </section>
 
-        {/* RIGHT */}
-        <ModuleSection modules={course.modules} />
-      </div>
-      <div className="mt-10">
-        {/* category */}
-        <span className="bg-green-500 text-sm px-3 py-1 rounded-xl text-black font-bold">
-          Development
-        </span>
-        <CourseIntro nam={nam} title={course.title} />
-        {/* navigation */}
-        <InforNav nam={nam} />
+        {/* CONTENT */}
+        <section className="grid gap-10 xl:grid-cols-[1fr_380px]">
+          <InforNav nam={nam} />
 
-        {/* testimonial */}
+          <ModuleSection modules={course.modules} />
+        </section>
+
+        {/* TESTIMONIAL */}
         <Testimonials />
       </div>
     </div>

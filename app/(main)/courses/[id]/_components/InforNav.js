@@ -1,5 +1,7 @@
 "use client";
+
 import { useState } from "react";
+
 import Curriculum from "./Curriculum";
 import Instructor from "./Instructor";
 import Overview from "./Overview";
@@ -9,25 +11,28 @@ const navData = [
   { Name: "Carriculum" },
   { Name: "Instructor" },
 ];
-const InforNav = ({nam}) => {
+
+const InforNav = ({ nam }) => {
   const [currentNav, setCurrentNav] = useState("Carriculum");
 
-  const handleClick = (name) => {
-    setCurrentNav(name);
-  };
   return (
-    <div className="mt-8">
-      <nav className="inline-block">
-        <ul className=" flex items-center gap-2 p-1 rounded-lg bg-zinc-900">
+    <div>
+      {/* nav */}
+      <nav className="mb-6">
+        <ul className="flex flex-wrap items-center gap-2 rounded-2xl border border-white/10 bg-zinc-900/40 p-2 backdrop-blur-md">
           {navData.map((data, index) => {
-            const isActive = currentNav == data.Name;
+            const isActive = currentNav === data.Name;
+
             return (
               <li
                 key={index}
-                className={`px-5 md:px-20 py-2 rounded cursor-pointer
-                    ${isActive ? "bg-zinc-950" : ""}
-                    `}
-                onClick={() => handleClick(data.Name)}
+                onClick={() => setCurrentNav(data.Name)}
+                className={`cursor-pointer rounded-xl px-5 py-2 text-sm font-medium transition
+                ${
+                  isActive
+                    ? "bg-zinc-950 text-white"
+                    : "text-zinc-500 hover:text-white"
+                }`}
               >
                 {data.Name}
               </li>
@@ -35,8 +40,9 @@ const InforNav = ({nam}) => {
           })}
         </ul>
       </nav>
+
       {/* content */}
-      <div>
+      <div className="rounded-3xl border border-white/10 bg-zinc-900/30 p-6 backdrop-blur-md">
         <div className={currentNav === "Overview" ? "block" : "hidden"}>
           <Overview />
         </div>
@@ -46,7 +52,7 @@ const InforNav = ({nam}) => {
         </div>
 
         <div className={currentNav === "Instructor" ? "block" : "hidden"}>
-          <Instructor nam={nam}/>
+          <Instructor nam={nam} />
         </div>
       </div>
     </div>

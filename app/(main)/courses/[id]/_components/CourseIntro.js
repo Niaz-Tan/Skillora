@@ -2,41 +2,54 @@ import Image from "next/image";
 
 const CourseIntro = ({ nam, title }) => {
   return (
-    <div className="space-y-4 md:w-[50%]">
-      {/* title */}
+    <section className="space-y-6">
+      {/* badge */}
       <div>
-        <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-4xl">
+        <span className="inline-flex rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1 text-sm font-medium text-emerald-400">
+          Web Development
+        </span>
+      </div>
+
+      {/* title */}
+      <div className="space-y-4">
+        <h1 className="max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
           {title}
         </h1>
 
-        <p className="mt-2 text-sm text-gray-400 sm:text-base">
-          Javascript & React mastery
+        <p className="max-w-3xl text-base leading-7 text-zinc-400">
+          Master JavaScript, React, Next.js and modern full stack development by
+          building real world projects step by step.
         </p>
       </div>
 
-      {/* instructor + updated */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      {/* meta */}
+      <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-zinc-900/40 p-5 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
         {/* instructor */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <Image
             unoptimized
             src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${nam}`}
-            alt="profile"
-            width={45}
-            height={45}
+            alt={nam}
+            width={52}
+            height={52}
             className="rounded-full border border-white/10 bg-white"
           />
 
-          <p className="text-base font-medium sm:text-lg">{nam}</p>
+          <div>
+            <p className="text-sm text-zinc-500">Instructor</p>
+
+            <h3 className="text-lg font-semibold text-white">{nam}</h3>
+          </div>
         </div>
 
-        {/* updated */}
-        <p className="text-sm text-gray-300 sm:text-base">
-          <span className="font-semibold text-green-500">Last Updated:</span>{" "}
-          Feb 22, 2022
-        </p>
+        {/* update */}
+        <div>
+          <p className="text-sm text-zinc-500">Last Updated</p>
+
+          <h3 className="mt-1 font-medium text-white">Feb 22, 2022</h3>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

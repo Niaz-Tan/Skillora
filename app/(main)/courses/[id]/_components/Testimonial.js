@@ -5,60 +5,52 @@ const testimonials = [
   {
     id: 1,
     name: "John Doe",
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, pariatur. Aspernatur reprehenderit voluptatem unde consequatur.",
+    review: "This course changed how I build apps. Super practical!",
   },
-
   {
     id: 2,
     name: "Sarah Smith",
-    review:
-      "This course completely changed how I build full stack applications. Everything was explained very clearly.",
+    review: "Very clean explanations and real-world projects.",
   },
-
   {
     id: 3,
     name: "Alex Johnson",
-    review:
-      "One of the best learning experiences I had online. The projects were super practical and fun.",
+    review: "Best online course I’ve taken so far.",
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="mt-16">
+    <div className="space-y-8">
       {/* heading */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold sm:text-4xl">Testimonials</h1>
-
+      <div>
+        <h1 className="text-3xl font-bold text-white">Testimonials</h1>
         <p className="mt-2 text-zinc-400">
           What students say about this course
         </p>
       </div>
 
-      {/* cards */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {testimonials.map((testimonial) => (
+      {/* grid */}
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {testimonials.map((t) => (
           <div
-            key={testimonial.id}
-            className="rounded-2xl border border-white/5 bg-zinc-900 p-6 transition hover:border-white/10 hover:bg-zinc-800"
+            key={t.id}
+            className="rounded-2xl border border-white/10 bg-black/20 p-6"
           >
-            {/* user */}
             <div className="flex items-center gap-4">
               <Image
                 unoptimized
-                src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${testimonial.name}`}
-                alt={testimonial.name}
-                width={56}
-                height={56}
+                src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${t.name}`}
+                alt={t.name}
+                width={50}
+                height={50}
                 className="rounded-full border border-white/10 bg-white"
               />
 
               <div>
-                <h2 className="text-lg font-semibold">{testimonial.name}</h2>
+                <h3 className="font-semibold text-white">{t.name}</h3>
 
-                {/* stars */}
-                <div className="mt-1 flex items-center gap-1 text-yellow-500">
+                <div className="flex text-yellow-400">
                   <FaStar />
                   <FaStar />
                   <FaStar />
@@ -68,14 +60,11 @@ const Testimonials = () => {
               </div>
             </div>
 
-            {/* review */}
-            <p className="mt-5 text-sm leading-7 text-zinc-400 sm:text-base">
-              {testimonial.review}
-            </p>
+            <p className="mt-4 text-sm leading-7 text-zinc-400">{t.review}</p>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
