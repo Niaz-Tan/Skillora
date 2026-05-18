@@ -1,6 +1,10 @@
+import { formatMyDate } from "@/lib/date";
 import Image from "next/image";
+import { use } from "react";
 
-const CourseIntro = ({ nam, title }) => {
+const CourseIntro = ({ nam, coursePromise }) => {
+  const { title, instructor, modifiedOn } = use(coursePromise);
+  console.log(use(coursePromise));
   return (
     <section className="space-y-6">
       {/* badge */}
@@ -28,8 +32,8 @@ const CourseIntro = ({ nam, title }) => {
         <div className="flex items-center gap-4">
           <Image
             unoptimized
-            src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${nam}`}
-            alt={nam}
+            src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${instructor.firstName + instructor.lastName}`}
+            alt={instructor.firstName + " " + instructor.lastName}
             width={52}
             height={52}
             className="rounded-full border border-white/10 bg-white"
@@ -38,7 +42,9 @@ const CourseIntro = ({ nam, title }) => {
           <div>
             <p className="text-sm text-zinc-500">Instructor</p>
 
-            <h3 className="text-lg font-semibold text-white">{nam}</h3>
+            <h3 className="text-lg font-semibold text-white">
+              {instructor.firstName + " " + instructor.lastName}
+            </h3>
           </div>
         </div>
 
@@ -46,7 +52,7 @@ const CourseIntro = ({ nam, title }) => {
         <div>
           <p className="text-sm text-zinc-500">Last Updated</p>
 
-          <h3 className="mt-1 font-medium text-white">Feb 22, 2022</h3>
+          <h3 className="mt-1 font-medium text-white">{formatMyDate(modifiedOn)}</h3>
         </div>
       </div>
     </section>

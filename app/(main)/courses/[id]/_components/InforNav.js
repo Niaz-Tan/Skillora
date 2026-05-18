@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 
 import Curriculum from "./Curriculum";
 import Instructor from "./Instructor";
@@ -12,8 +12,9 @@ const navData = [
   { Name: "Instructor" },
 ];
 
-const InforNav = ({ nam }) => {
-  const [currentNav, setCurrentNav] = useState("Carriculum");
+const InforNav = ({ coursePromise }) => {
+  const [currentNav, setCurrentNav] = useState("Overview");
+  const { instructor, testimonials } = use(coursePromise);
 
   return (
     <div>
@@ -52,7 +53,7 @@ const InforNav = ({ nam }) => {
         </div>
 
         <div className={currentNav === "Instructor" ? "block" : "hidden"}>
-          <Instructor nam={nam} />
+          <Instructor instructor={instructor} testimonials={testimonials}/>
         </div>
       </div>
     </div>

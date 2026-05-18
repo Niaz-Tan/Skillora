@@ -1,6 +1,8 @@
 import { formatPrice } from "@/lib/formatPrice";
+import { use } from "react";
 
-const Pricing = ({ price }) => {
+const Pricing = ({ coursePromise }) => {
+  const { price } = use(coursePromise);
   return (
     <aside className="rounded-3xl border border-white/10 bg-zinc-900/40 p-6 backdrop-blur-xl">
       <div className="space-y-5">
@@ -29,7 +31,7 @@ const Pricing = ({ price }) => {
       </div>
 
       {/* meta */}
-      <div className="mt-8 space-y-4 border-t border-white/10 pt-6 text-sm">
+      {/* <div className="mt-8 space-y-4 border-t border-white/10 pt-6 text-sm">
         <div className="flex items-center justify-between">
           <span className="text-zinc-500">Level</span>
 
@@ -53,7 +55,7 @@ const Pricing = ({ price }) => {
 
           <span className="text-emerald-400">Included</span>
         </div>
-      </div>
+      </div> */}
     </aside>
   );
 };
