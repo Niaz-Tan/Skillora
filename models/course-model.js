@@ -63,7 +63,12 @@ const courseSchema = new Schema(
       },
     ],
   },
-  { timestamps: true },
+  {
+    timestamps: {
+      createdAt: "createdOn",
+      updatedAt: "modifiedOn",
+    },
+  },
 );
 
 export const Course =

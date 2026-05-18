@@ -1,4 +1,3 @@
-import { replaceMongoIdInArray } from "@/lib/convertData";
 import "@/models/category-model";
 import { Course } from "@/models/course-model";
 import "@/models/module-model";
@@ -48,8 +47,7 @@ export const getCourseById = async (id) => {
 
     if (!course) return null; // better than returning []
 
-     return JSON.parse(JSON.stringify(course));
-  
+    return JSON.parse(JSON.stringify(course));
   } catch (err) {
     console.error(err);
     throw new Error(err);
