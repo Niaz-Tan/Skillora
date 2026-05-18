@@ -64,6 +64,12 @@ const courseSchema = new Schema(
     ],
   },
   {
+    learning: {
+      required: true,
+      type: [String],
+    },
+  },
+  {
     timestamps: {
       createdAt: "createdOn",
       updatedAt: "modifiedOn",
