@@ -5,6 +5,7 @@ import BackgroundBlobs from "./_components/BackgroundBlobs";
 import Banner from "./_components/Banner";
 import CourseIntro from "./_components/CourseIntro";
 import InforNav from "./_components/InforNav";
+import ModuleSection from "./_components/ModuleSection";
 import Pricing from "./_components/Pricing";
 import SkeleBanner from "./_components/skeletons/SkeleBanner";
 import SkeleCourseIntro from "./_components/skeletons/SkeleCourseIntro";
@@ -12,6 +13,7 @@ import SkeleInforNav from "./_components/skeletons/SkeleInforNav";
 import SkeleModuleSection from "./_components/skeletons/SkeleModuleSection";
 import SkelePricing from "./_components/skeletons/SkelePricing";
 import SkeleTestimonials from "./_components/skeletons/SkeleTestimonial";
+import Testimonials from "./_components/Testimonial";
 
 const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -49,18 +51,14 @@ const CourseDetailsPage = async ({ params }) => {
             <InforNav coursePromise={coursePromise} />
           </Suspense>
 
-          {/* <ModuleSection modules={course.modules} /> */}
-          <Suspense fallback={<div>Loading...</div>}>
-            {/* <Banner coursePromise={coursePromise} /> */}
-            <SkeleModuleSection />
+          <Suspense fallback={<SkeleModuleSection />}>
+            <ModuleSection coursePromise={coursePromise} />
           </Suspense>
         </section>
 
         {/* TESTIMONIAL */}
-        {/* <Testimonials /> */}
-        <Suspense fallback={<div>Loading...</div>}>
-          {/* <Banner coursePromise={coursePromise} /> */}
-          <SkeleTestimonials />
+        <Suspense fallback={<SkeleTestimonials />}>
+          <Testimonials coursePromise={coursePromise}/>
         </Suspense>
       </div>
     </div>

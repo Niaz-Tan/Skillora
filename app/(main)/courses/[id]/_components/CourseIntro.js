@@ -4,7 +4,6 @@ import { use } from "react";
 
 const CourseIntro = ({ nam, coursePromise }) => {
   const { title, instructor, modifiedOn } = use(coursePromise);
-  console.log(use(coursePromise));
   return (
     <section className="space-y-6">
       {/* badge */}
@@ -52,7 +51,9 @@ const CourseIntro = ({ nam, coursePromise }) => {
         <div>
           <p className="text-sm text-zinc-500">Last Updated</p>
 
-          <h3 className="mt-1 font-medium text-white">{formatMyDate(modifiedOn)}</h3>
+          <h3 className="mt-1 font-medium text-white">
+            {formatMyDate(modifiedOn)}
+          </h3>
         </div>
       </div>
     </section>
