@@ -17,7 +17,7 @@ const ModuleSection = ({ modules }) => {
             key={module._id}
             className="group overflow-hidden rounded-2xl border border-white/10 bg-black/20"
           >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/[0.03]">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition hover:bg-white/3">
               <div>
                 <p className="text-sm text-zinc-500">Module {index + 1}</p>
 

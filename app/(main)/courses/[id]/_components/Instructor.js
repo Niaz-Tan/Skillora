@@ -14,7 +14,7 @@ const Instructor = ({ nam }) => {
           alt={nam}
           width={220}
           height={220}
-          className="w-full max-w-[260px] rounded-2xl border border-white/10 bg-white object-cover"
+          className="w-full max-w-65 rounded-2xl border border-white/10 bg-white object-cover"
         />
 
         <div className="flex-1">

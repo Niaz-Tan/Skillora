@@ -19,7 +19,7 @@ const Pricing = ({ price }) => {
 
       {/* buttons */}
       <div className="mt-8 flex flex-col gap-3">
-        <button className="rounded-2xl bg-gradient-to-r from-fuchsia-500 to-violet-600 py-4 text-sm font-semibold text-white transition hover:opacity-90">
+        <button className="rounded-2xl bg-linear-to-r from-fuchsia-500 to-violet-600 py-4 text-sm font-semibold text-white transition hover:opacity-90">
           Enroll Now
         </button>
 
