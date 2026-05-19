@@ -12,9 +12,9 @@ const navData = [
   { Name: "Instructor" },
 ];
 
-const InforNav = ({ coursePromise }) => {
+const InforNav = ({ course }) => {
   const [currentNav, setCurrentNav] = useState("Overview");
-  const { instructor, testimonials } = use(coursePromise);
+  const { instructor, testimonials } = course;
 
   return (
     <div>

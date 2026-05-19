@@ -1,8 +1,7 @@
-import { use } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 
-const ModuleSection = ({ coursePromise }) => {
-  const { modules } = use(coursePromise);
+const ModuleSection = ({ course }) => {
+  const { modules } = course;
   return (
     <div className="h-fit rounded-3xl border border-white/10 bg-zinc-900/30 p-6 backdrop-blur-md">
       <div className="mb-8">

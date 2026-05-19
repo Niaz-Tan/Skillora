@@ -1,8 +1,7 @@
 import { formatPrice } from "@/lib/formatPrice";
-import { use } from "react";
 
-const Pricing = ({ coursePromise }) => {
-  const { price } = use(coursePromise);
+const Pricing = ({ course }) => {
+  const { price } = course;
   return (
     <aside className="rounded-3xl border border-white/10 bg-zinc-900/40 p-6 backdrop-blur-xl">
       <div className="space-y-5">

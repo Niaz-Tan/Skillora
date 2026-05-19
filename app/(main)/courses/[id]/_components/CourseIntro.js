@@ -1,9 +1,8 @@
 import { formatMyDate } from "@/lib/date";
 import Image from "next/image";
-import { use } from "react";
 
-const CourseIntro = ({ nam, coursePromise }) => {
-  const { title, instructor, modifiedOn } = use(coursePromise);
+const CourseIntro = ({ course }) => {
+  const { title, instructor, modifiedOn } = course;
   return (
     <section className="space-y-6">
       {/* badge */}

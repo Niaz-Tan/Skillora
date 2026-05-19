@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { use } from "react";
 import { FaStar } from "react-icons/fa";
 
-const Testimonials = ({ coursePromise }) => {
-  const { testimonials = [] } = use(coursePromise);
+const Testimonials = ({ course }) => {
+  const { testimonials = [] } = course;
 
   return (
     <div className="space-y-8">

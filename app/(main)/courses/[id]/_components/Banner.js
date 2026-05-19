@@ -1,9 +1,6 @@
 import Image from "next/image";
-import { use } from "react";
 
-const Banner = ({ coursePromise }) => {
-  const course = use(coursePromise);
-
+const Banner = ({ course }) => {
   return (
     <div className="group relative aspect-video overflow-hidden rounded-3xl border border-white/10">
       <Image
