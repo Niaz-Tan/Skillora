@@ -16,24 +16,17 @@ const MobileFilter = ({
           <FaTimes />
         </button>
 
-        <h2 className="mt-4 font-semibold">
-          Categories
-        </h2>
+        <h2 className="mt-4 font-semibold">Categories</h2>
 
         <div className="space-y-2 mt-3">
           {categories.map((cat) => {
-            const active =
-              selectedCategories.includes(cat.title);
+            const active = selectedCategories.includes(cat.title);
 
             return (
               <label
                 key={cat._id}
                 className={`flex justify-between items-center px-3 py-2 rounded-xl border transition
-                ${
-                  active
-                    ? "bg-white/10 border-white/20"
-                    : "border-white/10"
-                }
+                ${active ? "bg-white/10 border-white/20" : "border-white/10"}
               `}
               >
                 <span>{cat.title}</span>
@@ -41,9 +34,7 @@ const MobileFilter = ({
                 <input
                   type="checkbox"
                   checked={active}
-                  onChange={() =>
-                    toggleCategory(cat.title)
-                  }
+                  onChange={() => toggleCategory(cat.title)}
                   className="accent-white"
                 />
               </label>

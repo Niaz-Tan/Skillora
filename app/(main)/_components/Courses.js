@@ -1,5 +1,4 @@
 import { formatPrice } from "@/lib/formatPrice";
-import { getCategories } from "@/queries/categories";
 import { getCourses } from "@/queries/courses";
 import Image from "next/image";
 import Link from "next/link";

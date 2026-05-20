@@ -1,12 +1,7 @@
-const DesktopControls = ({
-  sort,
-  setSort,
-  priceFilter,
-  setPriceFilter,
-}) => {
+const DesktopControls = ({ sort, setSort, priceFilter, setPriceFilter }) => {
   return (
     <div className="hidden md:flex items-center justify-between mt-5 gap-4">
-      <div className="relative w-[180px]">
+      <div className="relative w-45">
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}

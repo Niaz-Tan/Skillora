@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section className="relative overflow-hidden pt-28 pb-24 px-6 md:px-10 lg:px-40">
       <div className="mx-auto max-w-5xl text-center">
-        <div className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-zinc-300 backdrop-blur-xl">
+        <div className="inline-flex items-center rounded-full border border-white/10 bg-white/3 px-4 py-2 text-sm text-zinc-300 backdrop-blur-xl">
           Welcome to Skillora
         </div>
 
@@ -29,7 +29,7 @@ const Hero = () => {
 
           <Link
             href="/register/teacher"
-            className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-3 font-medium text-white backdrop-blur-xl transition hover:bg-white/[0.06]"
+            className="rounded-2xl border border-white/10 bg-white/3 px-6 py-3 font-medium text-white backdrop-blur-xl transition hover:bg-white/6"
           >
             Start Teaching
           </Link>

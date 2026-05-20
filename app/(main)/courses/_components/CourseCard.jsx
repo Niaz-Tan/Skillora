@@ -5,7 +5,7 @@ const CourseCard = ({ course }) => {
   return (
     <Link
       href={`/courses/${course._id}`}
-      className="rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden"
+      className="rounded-3xl border border-white/10 bg-white/3 overflow-hidden"
     >
       <div className="relative aspect-video">
         <Image
@@ -18,13 +18,9 @@ const CourseCard = ({ course }) => {
       </div>
 
       <div className="p-5">
-        <p className="text-xs text-zinc-400">
-          {course.category?.title}
-        </p>
+        <p className="text-xs text-zinc-400">{course.category?.title}</p>
 
-        <h3 className="mt-2 font-semibold">
-          {course.title}
-        </h3>
+        <h3 className="mt-2 font-semibold">{course.title}</h3>
       </div>
     </Link>
   );

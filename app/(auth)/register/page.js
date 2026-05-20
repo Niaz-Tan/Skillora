@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { PiStudentFill } from "react-icons/pi";
 import { HiMiniAcademicCap } from "react-icons/hi2";
+import { PiStudentFill } from "react-icons/pi";
 
 export default function RegisterPage() {
   return (
@@ -10,7 +10,7 @@ export default function RegisterPage() {
           href="/register/student"
           className="
             group w-full rounded-2xl border border-zinc-800/80
-            bg-gradient-to-br from-[#18181f]/95 to-[#222235]/85
+            bg-linear-to-br from-[#18181f]/95 to-[#222235]/85
             backdrop-blur-xl px-6 py-5 transition-all duration-300
             hover:border-zinc-700 hover:-translate-y-0.5
           "
@@ -42,7 +42,7 @@ export default function RegisterPage() {
           href="/register/teacher"
           className="
             group w-full rounded-2xl border border-zinc-800/80
-            bg-gradient-to-br from-[#18181f]/95 to-[#222235]/85
+            bg-linear-to-br from-[#18181f]/95 to-[#222235]/85
             backdrop-blur-xl px-6 py-5 transition-all duration-300
             hover:border-zinc-700 hover:-translate-y-0.5
           "

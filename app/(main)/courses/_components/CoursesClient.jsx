@@ -41,7 +41,7 @@ const CoursesClient = ({ courses, categories }) => {
   return (
     <div className="min-h-screen px-6 pt-28 pb-20 md:px-10 lg:px-40 text-white relative">
       {/* background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-size-[24px_24px]" />
 
       <div className="relative">
         <SearchBar search={search} setSearch={setSearch} />

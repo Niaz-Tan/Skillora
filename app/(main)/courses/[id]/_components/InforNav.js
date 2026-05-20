@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { useState } from "react";
 
 import Curriculum from "./Curriculum";
 import Instructor from "./Instructor";
@@ -53,7 +53,7 @@ const InforNav = ({ course }) => {
         </div>
 
         <div className={currentNav === "Instructor" ? "block" : "hidden"}>
-          <Instructor instructor={instructor} testimonials={testimonials}/>
+          <Instructor instructor={instructor} testimonials={testimonials} />
         </div>
       </div>
     </div>
