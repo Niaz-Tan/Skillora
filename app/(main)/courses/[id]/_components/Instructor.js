@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { CiStar } from "react-icons/ci";
 import { FaRegMessage, FaTv } from "react-icons/fa6";
+import { MdPeopleAlt } from "react-icons/md";
 
 const Instructor = ({ instructor, testimonials }) => {
   return (
@@ -29,30 +31,26 @@ const Instructor = ({ instructor, testimonials }) => {
               {instructor.courses.length}+ Courses
             </div>
 
-            {/* <div className="flex items-center gap-3 text-zinc-300">
+            <div className="flex items-center gap-3 text-zinc-300">
               <MdPeopleAlt className="text-lg text-zinc-400" />
               2k+ Students
-            </div> */}
+            </div>
 
             <div className="flex items-center gap-3 text-zinc-300">
               <FaRegMessage className="text-lg text-zinc-400" />
               {testimonials.length}+ Reviews
             </div>
 
-            {/* <div className="flex items-center gap-3 text-zinc-300">
+            <div className="flex items-center gap-3 text-zinc-300">
               <CiStar className="text-lg text-emerald-400" />
               4.9 Rating
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
 
       {/* description */}
-      <p className="text-base leading-8 text-zinc-400">
-        There are many variations of passages of Lorem Ipsum available, but the
-        majority have suffered alteration in some form, by injected humour or
-        randomised words which do not look even slightly believable.
-      </p>
+      <p className="text-base leading-8 text-zinc-400">{instructor.bio}</p>
     </div>
   );
 };

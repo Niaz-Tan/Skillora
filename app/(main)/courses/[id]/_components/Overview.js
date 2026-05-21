@@ -1,14 +1,14 @@
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 
-const Overview = () => {
+const Overview = ({ course }) => {
+  const { category, learning } = course;
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-white">Course Description</h1>
 
         <p className="mt-5 text-base leading-8 text-zinc-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
-          dignissimos ipsam.
+          {category.description}
         </p>
       </div>
 
@@ -18,13 +18,11 @@ const Overview = () => {
         </h2>
 
         <ul className="mt-6 grid gap-5 md:grid-cols-2">
-          {[1, 2, 3, 4].map((item) => (
-            <li key={item} className="flex items-start gap-3 text-zinc-300">
+          {learning.map((item, index) => (
+            <li key={index} className="flex items-start gap-3 text-zinc-300">
               <IoCheckmarkDoneOutline className="mt-1 shrink-0 text-lg text-emerald-400" />
 
-              <span className="leading-7">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </span>
+              <span className="leading-7">{item}</span>
             </li>
           ))}
         </ul>
