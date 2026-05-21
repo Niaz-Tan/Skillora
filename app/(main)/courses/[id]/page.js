@@ -12,7 +12,6 @@ const CourseDetailsPage = async ({ params }) => {
   const { id } = await params;
 
   const course = await getCourseById(id);
-  console.log(course);
   const nam = "Coder Guru";
 
   return (

@@ -3,7 +3,7 @@ import { CiStar } from "react-icons/ci";
 import { FaRegMessage, FaTv } from "react-icons/fa6";
 import { MdPeopleAlt } from "react-icons/md";
 
-const Instructor = ({ instructor, testimonials }) => {
+const Instructor = async ({ instructor, testimonials }) => {
   return (
     <div className="space-y-8">
       {/* top */}
