@@ -23,7 +23,12 @@ export const getCourses = async () => {
       .populate("modules")
       .populate("category")
       .populate("instructor")
-      .populate("testimonials")
+      .populate({
+        path: "testimonials",
+        populate: {
+          path: "user",
+        },
+      })
       .populate("quizzes")
       .lean();
 
@@ -41,7 +46,12 @@ export const getCourseById = async (id) => {
       .populate("modules")
       .populate("category")
       .populate("instructor")
-      .populate("testimonials")
+      .populate({
+        path: "testimonials",
+        populate: {
+          path: "user",
+        },
+      })
       // .populate("quizzes")
       .lean();
 

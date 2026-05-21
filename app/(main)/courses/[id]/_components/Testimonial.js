@@ -5,7 +5,6 @@ import { FaStar } from "react-icons/fa";
 
 const Testimonials = ({ course }) => {
   const { testimonials = [] } = course;
-
   return (
     <div className="space-y-8">
       {/* heading */}
@@ -21,41 +20,42 @@ const Testimonials = ({ course }) => {
         {testimonials.length === 0 ? (
           <p className="text-zinc-400">Nothing here</p>
         ) : (
-          testimonials.map((t) => (
-            <div
-              key={t?._id}
-              className="rounded-2xl border border-white/10 bg-black/20 p-6"
-            >
-              <div className="flex items-center gap-4">
-                <Image
-                  unoptimized
-                  src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${encodeURIComponent(
-                    t?.name || "User",
-                  )}`}
-                  alt={t?.name || "User"}
-                  width={45}
-                  height={45}
-                  className="rounded-full border border-white/10 bg-white"
-                />
+          testimonials.map((t) => {
+            const nam = t?.user?.firstName + " " + t?.user?.lastName;
+            return (
+              <div
+                key={t?._id}
+                className="rounded-2xl border border-white/10 bg-black/20 p-6"
+              >
+                <div className="flex items-center gap-4">
+                  <Image
+                    unoptimized
+                    src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${nam}`}
+                    alt={t?.name || "User"}
+                    width={45}
+                    height={45}
+                    className="rounded-full border border-white/10 bg-white"
+                  />
 
-                <div>
-                  <h3 className="font-semibold text-white">
-                    {t?.name || "Anonymous"}
-                  </h3>
+                  <div>
+                    <h3 className="font-semibold text-white">
+                      {nam || "Anonymous"}
+                    </h3>
 
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} />
-                    ))}
+                    <div className="flex text-yellow-400">
+                      {[...Array(t?.rating)].map((_, i) => (
+                        <FaStar key={i} />
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <p className="mt-4 text-sm leading-7 text-zinc-400">
-                {t?.review || "No review available"}
-              </p>
-            </div>
-          ))
+                <p className="mt-4 text-sm leading-7 text-zinc-400">
+                  {t?.content || "No review available"}
+                </p>
+              </div>
+            );
+          })
         )}
       </div>
     </div>
