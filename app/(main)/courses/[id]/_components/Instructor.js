@@ -1,9 +1,12 @@
+import { formatCount } from "@/lib/formatCount";
+import { getAvgRating } from "@/lib/getAvgRating";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
 import { FaRegMessage, FaTv } from "react-icons/fa6";
 import { MdPeopleAlt } from "react-icons/md";
 
-const Instructor = ({ instructor, testimonials }) => {
+const Instructor = ({ course }) => {
+  const { instructor, testimonials } = course;
   return (
     <div className="space-y-8">
       {/* top */}
@@ -28,7 +31,7 @@ const Instructor = ({ instructor, testimonials }) => {
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="flex items-center gap-3 text-zinc-300">
               <FaTv className="text-lg text-zinc-400" />
-              {instructor.courses.length}+ Courses
+              {formatCount(instructor.courses.length)} Courses
             </div>
 
             <div className="flex items-center gap-3 text-zinc-300">
@@ -38,12 +41,12 @@ const Instructor = ({ instructor, testimonials }) => {
 
             <div className="flex items-center gap-3 text-zinc-300">
               <FaRegMessage className="text-lg text-zinc-400" />
-              {testimonials.length}+ Reviews
+              {formatCount(testimonials.length)} Reviews
             </div>
 
             <div className="flex items-center gap-3 text-zinc-300">
               <CiStar className="text-lg text-emerald-400" />
-              4.9 Rating
+              {getAvgRating(testimonials)} Rating
             </div>
           </div>
         </div>

@@ -14,7 +14,6 @@ const navData = [
 
 const InforNav = ({ course }) => {
   const [currentNav, setCurrentNav] = useState("Overview");
-  const { instructor, testimonials } = course;
 
   return (
     <div>
@@ -53,7 +52,7 @@ const InforNav = ({ course }) => {
         </div>
 
         <div className={currentNav === "Instructor" ? "block" : "hidden"}>
-          <Instructor instructor={instructor} testimonials={testimonials} />
+          <Instructor course={course} />
         </div>
       </div>
     </div>
