@@ -13,7 +13,7 @@ const navData = [
 ];
 
 const InforNav = ({ course }) => {
-  const [currentNav, setCurrentNav] = useState("Instructor");
+  const [currentNav, setCurrentNav] = useState("Overview");
   const { instructor, testimonials } = course;
 
   return (
