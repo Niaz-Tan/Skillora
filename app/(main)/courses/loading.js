@@ -65,7 +65,6 @@ export default function Loading() {
           </div>
         </div>
 
-        {/* MOBILE FLOAT BUTTONS */}
         <div className="md:hidden fixed bottom-4 left-4 right-4 flex gap-3">
           <div className="flex-1 h-12 bg-white/10 rounded-xl" />
           <div className="flex-1 h-12 bg-white/10 rounded-xl" />
