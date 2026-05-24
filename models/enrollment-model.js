@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const enrollmentSchema = new Schema({
   enrollment_date: {
@@ -26,3 +26,6 @@ const enrollmentSchema = new Schema({
     ref: "User",
   },
 });
+
+export const Enrollment =
+  mongoose.models.Enrollment ?? mongoose.model("Enrollment", enrollmentSchema);
